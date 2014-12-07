@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5level [%t] %d{HH:mm:ss.SSS} %logger{36} - %msg%n"/>
+		</Console>
+		
+		<File name="File" fileName="test.log">
+			<PatternLayout pattern="[%d{ISO8601} %-5level] %logger{36} - %msg%n"/>
+		</File>
+	</Appenders>
+	<Loggers>
+	   	<Logger name="http.SongkickConnector" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	<Logger name="search.ArtistSearch" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	
+	 	<Logger name="search.EventSearch" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	
+	 	<Logger name="jsongkick.Extractor" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	
+	 	<Logger name="search.LocationSearch" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	
+ 		<Logger name="jsongkick.App" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	
+	 	<Logger name="http.HttpConnectorImpl" level="trace" additivity="false">
+	 		<AppenderRef ref="Console"/>
+	 	</Logger>
+	 	
+	   <Root level="trace">
+	     <AppenderRef ref="Console"/>
+	     <AppenderRef ref="File" level="trace" />
+	   </Root>\
+	</Loggers>
+</Configuration>
