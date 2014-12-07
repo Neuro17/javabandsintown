@@ -11,7 +11,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 
 import entity.Artist;
 import entity.Event;
@@ -20,9 +19,12 @@ import entity.Venue;
 public class Extractor {
 	
 	private static final Logger log = LogManager.getLogger(Extractor.class);
+	
+	@SuppressWarnings("unused")
 	private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	
 	public static ArrayList<Event> extractEvents(JsonElement item){
+		log.trace("Entering extractEvents");
 		ArrayList<Event> events = new ArrayList<Event>();
 		JsonObject eventsAsJson = item.getAsJsonObject();
 		
@@ -32,10 +34,12 @@ public class Extractor {
 		for(JsonElement e : eventsAsJson.get("resultsPage").getAsJsonArray()){
 			events.add(extractEvent(e));
 		}
+		log.trace("Exiting extractEvents");
 		return events;
 	}
 	
 	public static Event extractEvent(JsonElement item){
+		log.trace("Entering extractEvent");
 		JsonObject eventsAsJson = item.getAsJsonObject();
 		Event event = new Event();
 		
@@ -48,10 +52,12 @@ public class Extractor {
 		if(!eventsAsJson.get("description").isJsonNull())
 			event.setDescription(eventsAsJson.get("description").getAsString());
 		
+		log.trace("Exiting extractEvent");
 		return event;
 	}
 	
 	private static Venue extractVenue(JsonElement jsonElement) {
+		log.trace("Entering extractVenue");
 		JsonObject venueAsJson = jsonElement.getAsJsonObject();
 		Venue venue = new Venue();
 		
@@ -66,20 +72,24 @@ public class Extractor {
 		if(!venueAsJson.get("region").isJsonNull())
 			venue.setRegion(venueAsJson.get("region").getAsString());
 		
+		log.trace("Exiting extractVenue");
 		return venue;
 	}
 
 	private static ArrayList<Artist> extractArtists(JsonElement jsonElement) {
+		log.trace("Entering extractArtists");
 		JsonArray artistsAsJson = jsonElement.getAsJsonArray();
 		ArrayList<Artist> artists = new ArrayList<Artist>();
 		
 		for(JsonElement a : artistsAsJson)
 			artists.add(extractArtist(a));
 		
+		log.trace("Exiting extractArtists");
 		return artists;
 	}
 
 	public static Artist extractArtist(JsonElement item){
+		log.trace("Entering extractArtist");
 		Artist artist;
 		JsonObject artistTmp = item.getAsJsonObject();
 		
@@ -88,6 +98,7 @@ public class Extractor {
 		else
 			artist = new Artist(artistTmp.get("name").getAsString(), artistTmp.get("mbid").getAsString());
 		
+		log.trace("Exiting extractArtist");
 		return artist;
 	}
 	

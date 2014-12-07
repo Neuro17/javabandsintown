@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import requests.Paramaters;
-import search.Bandsintown;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,30 +64,39 @@ public abstract class BandsintownConnector extends HttpConnectorImpl {
 	}
 	
 	public BandsintownConnector setArtistID(String id) {
+		log.trace("Entering setArtistID");
 		uriBld.setParameter(Paramaters.getArtistId(), id);
+		log.trace("Exiting setArtistID");
 		return this;
 	}
 	
 	public BandsintownConnector asJson(){
+		log.trace("Entering asJson");
 		uriBld.setParameter(Paramaters.getFormat(), "json");
+		log.trace("Exiting asJson");
 		return this;
 	}
 	
 	public BandsintownConnector asXML(){
+		log.trace("Entering asXML");
 		uriBld.setParameter(Paramaters.getFormat(), "XML");
+		log.trace("Exiting asXML");
 		return this;
 	}
 	
 	public BandsintownConnector setAppId() {
+		log.trace("Entering setAppId");
 		uriBld.setParameter(Paramaters.getAppId(), BandsintownConfig.getApiKey());
+		log.trace("Exiting setAppId");
 		return this;
 	}
 	
 	public BandsintownConnector setApiVersion(){
+		log.trace("Entering setApiVersion");
 		uriBld.setParameter(Paramaters.getApiVersion(), BandsintownConfig.getApiVersion());
+		log.trace("Exiting setApiVersion");
 		return this;
 	}
 	
 	public abstract void build();
-
 }

@@ -37,6 +37,7 @@ public abstract class HttpConnectorImpl {
 	 * @throws IOException 
 	 */
 	protected JsonObject executeRequest(URI uri){
+		log.trace("Entering executeRequest");
 		InputStream response = null;
 		
 		try {
@@ -69,6 +70,7 @@ public abstract class HttpConnectorImpl {
 			jsonResponse =  null;
 		}
 
+		log.trace("Exiting executeRequest");
 		return jsonResponse;
 	}
 	
@@ -99,13 +101,14 @@ public abstract class HttpConnectorImpl {
 		} catch (IOException e) {
 			log.error(e.getMessage());
 		}
-		log.trace("Exiting parseResponseAsJson");
+
 		try {
 			jsonResponse = jsonParser.parse(result.toString()).getAsJsonObject();
 		} catch(IllegalStateException e){
 			jsonResponse.add("resultsPage", jsonParser.parse(result.toString()).getAsJsonArray());
 		} 
 		
+		log.trace("Exiting parseResponseAsJson");
 		return jsonResponse;
 	}
 	
