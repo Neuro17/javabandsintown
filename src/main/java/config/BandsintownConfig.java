@@ -10,6 +10,18 @@ public class BandsintownConfig {
 	private static final String EVENT_PATH = "/events";
 
 	private static String apiKey = "YOUR_APP_ID";
+	
+	private static String apiVersion = "2.0";
+
+	
+
+	public static String getApiVersion() {
+		return apiVersion;
+	}
+
+	public static void setApiVersion(String apiVersion) {
+		BandsintownConfig.apiVersion = apiVersion;
+	}
 
 	public static String getScheme() {
 		return SCHEME;

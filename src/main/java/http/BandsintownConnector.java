@@ -3,12 +3,11 @@ package http;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import requests.Paramaters;
-import search.Get;
+import search.Bandsintown;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -85,5 +84,11 @@ public abstract class BandsintownConnector extends HttpConnectorImpl {
 		return this;
 	}
 	
+	public BandsintownConnector setApiVersion(){
+		uriBld.setParameter(Paramaters.getApiVersion(), BandsintownConfig.getApiVersion());
+		return this;
+	}
+	
 	public abstract void build();
+
 }

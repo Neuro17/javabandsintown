@@ -1,5 +1,7 @@
 package requests;
 
+import http.BandsintownConnector;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -11,7 +13,6 @@ import search.Get;
 
 import com.google.gson.JsonObject;
 
-import http.BandsintownConnector;
 import config.BandsintownConfig;
 import entity.Artist;
 
@@ -33,7 +34,6 @@ public class ArtistGet extends BandsintownConnector implements Get{
 	}
 	
 	public Artist search(){
-		Artist artist;
 		JsonObject artistAsJson;
 		
 		build();

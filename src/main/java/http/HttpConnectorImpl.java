@@ -82,6 +82,8 @@ public abstract class HttpConnectorImpl {
 	 */
 	protected JsonObject parseResponseAsJson(InputStream response){
 		log.trace("Entering parseResponseAsJson");
+		JsonObject jsonResponse = new JsonObject();
+		
 		BufferedReader rd = new BufferedReader(new InputStreamReader(response));
 		
 		JsonParser jsonParser = new JsonParser();
@@ -98,7 +100,13 @@ public abstract class HttpConnectorImpl {
 			log.error(e.getMessage());
 		}
 		log.trace("Exiting parseResponseAsJson");
-		return jsonParser.parse(result.toString()).getAsJsonObject();
+		try {
+			jsonResponse = jsonParser.parse(result.toString()).getAsJsonObject();
+		} catch(IllegalStateException e){
+			jsonResponse.add("resultsPage", jsonParser.parse(result.toString()).getAsJsonArray());
+		} 
+		
+		return jsonResponse;
 	}
 	
 	protected boolean isNullResponse(){
