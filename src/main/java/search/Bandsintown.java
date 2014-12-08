@@ -13,8 +13,8 @@ import entity.Event;
 
 public class Bandsintown {
 	private final static Logger log = LogManager.getLogger(Bandsintown.class);
-	private ArtistGet getArtist;
-	private EventsGet getEvents;
+	public ArtistGet getArtist;
+	public EventsGet getEvents;
 	
 	public Bandsintown() {
 		getArtist = new ArtistGet();
@@ -42,6 +42,14 @@ public class Bandsintown {
 		events = ((EventsGet) ((EventsGet) bandsintown.getEvents.setArtist("tale of us")).setDate("2014-11-07,2014-12-12").setApiVersion()).search();
 		for(Event e : events)
 			log.debug(e);
+		
+		artist = ((ArtistGet) bandsintown.getArtist.setArtist("barra").setAppId().setApiVersion()).search();
+		System.out.println(artist);
+		
+		events = ((EventsGet) ((EventsGet) bandsintown.getEvents.setArtist("pearl jam ")).setDate("all").setApiVersion()).search();
+		for(Event e : events)
+			log.debug(e);
+		
 	}
 
 }

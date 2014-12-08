@@ -44,6 +44,7 @@ public class Extractor {
 		Event event = new Event();
 		
 		event.setId(eventsAsJson.get("id").getAsInt());
+		//TODO controllare se le date vengono create correttamente
 		event.setDatetime(new DateTime(eventsAsJson.get("datetime").getAsString()));
 		event.setTitle(eventsAsJson.get("title").getAsString());
 		event.setArtist(extractArtists(eventsAsJson.get("artists")));
@@ -92,7 +93,7 @@ public class Extractor {
 		log.trace("Entering extractArtist");
 		Artist artist;
 		JsonObject artistTmp = item.getAsJsonObject();
-		
+		log.debug(artistTmp);
 		if(artistTmp.get("mbid").isJsonNull())
 			artist = new Artist(artistTmp.get("name").getAsString());
 		else

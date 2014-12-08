@@ -53,9 +53,6 @@ public abstract class HttpConnectorImpl {
 			log.debug(uri.toString());
 			jsonResponse = parseResponseAsJson(response);
 			log.debug(jsonResponse);
-//			log.debug("Number of entries: " + jsonResponse.getAsJsonObject("resultsPage").get("totalEntries").getAsString());
-//			log.debug("Number of results per page: " + jsonResponse.getAsJsonObject("resultsPage").get("perPage").getAsString());
-//			log.debug("Page number: " + jsonResponse.getAsJsonObject("resultsPage").get("page"));
 			
 //			log.debug(gson.toJson(jsonResponse));
 			
