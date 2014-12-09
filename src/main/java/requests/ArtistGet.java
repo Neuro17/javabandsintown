@@ -16,8 +16,6 @@ import entity.Artist;
 
 public class ArtistGet extends BandsintownConnector{
 	private static final Logger log = LogManager.getLogger(ArtistGet.class);
-
-	private URI uri;
 	
 	public ArtistGet(){
 		uriBld = new URIBuilder();
@@ -26,7 +24,7 @@ public class ArtistGet extends BandsintownConnector{
 	}
 	
 
-	public BandsintownConnector setArtist(String name){
+	public ArtistGet setArtist(String name){
 		log.trace("Entering setArtist");
 		uriBld.setPath(BandsintownConfig.getArtistPath() + "/" + name);
 		log.trace("Exiting setArtist");
@@ -38,22 +36,10 @@ public class ArtistGet extends BandsintownConnector{
 		JsonObject artistAsJson;
 		
 		build();
+		log.debug(uri);
 		artistAsJson = executeRequest(uri);
 		log.debug(artistAsJson);
 		log.trace("Exiting search");
 		return Extractor.extractArtist(artistAsJson);
 	}
-	
-	public void build(){
-		log.trace("Entering build");
-		setAppId();
-		try {
-			uri = uriBld.build();
-			log.debug(uri);
-		} catch (URISyntaxException e) {
-			log.error(e.getMessage());
-		}
-		log.trace("Exiting build");
-	}
-
 }

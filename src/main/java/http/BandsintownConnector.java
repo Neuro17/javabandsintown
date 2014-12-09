@@ -98,5 +98,15 @@ public abstract class BandsintownConnector extends HttpConnectorImpl {
 		return this;
 	}
 	
-	public abstract void build();
+	public void build(){
+		log.trace("Entering build");
+		setAppId();
+		try {
+			uri = uriBld.build();
+			log.debug(uri);
+		} catch (URISyntaxException e) {
+			log.error(e.getMessage());
+		}
+		log.trace("Exiting build");
+	}
 }

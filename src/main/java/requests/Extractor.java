@@ -44,7 +44,6 @@ public class Extractor {
 		Event event = new Event();
 		
 		event.setId(eventsAsJson.get("id").getAsInt());
-		//TODO controllare se le date vengono create correttamente
 		event.setDatetime(new DateTime(eventsAsJson.get("datetime").getAsString()));
 		event.setTitle(eventsAsJson.get("title").getAsString());
 		event.setArtist(extractArtists(eventsAsJson.get("artists")));
@@ -57,7 +56,7 @@ public class Extractor {
 		return event;
 	}
 	
-	private static Venue extractVenue(JsonElement jsonElement) {
+	public static Venue extractVenue(JsonElement jsonElement) {
 		log.trace("Entering extractVenue");
 		JsonObject venueAsJson = jsonElement.getAsJsonObject();
 		Venue venue = new Venue();
@@ -77,7 +76,7 @@ public class Extractor {
 		return venue;
 	}
 
-	private static ArrayList<Artist> extractArtists(JsonElement jsonElement) {
+	public static ArrayList<Artist> extractArtists(JsonElement jsonElement) {
 		log.trace("Entering extractArtists");
 		JsonArray artistsAsJson = jsonElement.getAsJsonArray();
 		ArrayList<Artist> artists = new ArrayList<Artist>();

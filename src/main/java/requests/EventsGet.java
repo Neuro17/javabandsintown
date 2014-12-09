@@ -19,8 +19,6 @@ public class EventsGet extends BandsintownConnector{
 	
 	private static final Logger log = LogManager.getLogger(EventsGet.class);
 
-	private URI uri;
-	
 	public EventsGet(){
 		uriBld = new URIBuilder();
 		buildURI();
@@ -41,18 +39,6 @@ public class EventsGet extends BandsintownConnector{
 		return this;
 	}
 
-	@Override
-	public void build() {
-		log.trace("Entering build");
-		setAppId();
-		try {
-			uri = uriBld.build();
-			log.debug(uri);
-		} catch (URISyntaxException e){
-			log.error(e.getMessage());
-		}
-		log.trace("Exiting build");
-	}
 
 	public ArrayList<Event> search() {
 		log.trace("Entering search");

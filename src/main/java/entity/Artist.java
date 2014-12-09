@@ -1,6 +1,6 @@
 package entity;
 
-public class Artist implements entity {
+public class Artist {
 	private String name;
 	private String id;
 	
@@ -31,7 +31,7 @@ public class Artist implements entity {
 
 	@Override
 	public String toString() {
-		return "SongkickArtist [name=" + name + ", id=" + id + "]";
+		return "Bandsintown artist [name=" + name + ", id=" + id + "]";
 	}
 
 }
