@@ -23,32 +23,35 @@ public class App {
 //		
 //		String mbid = "9282c8b4-ca0b-4c6b-b7e3-4f7762dfc4d6";
 		
-//		artist = ((ArtistGet) bandsintown.getArtist.setArtist("pearl jam").asJson()).search();
-//		log.debug(artist);
-//		
-//		events = ((EventsGet) ((EventsGet) bandsintown.getEvents.setArtist("empire empire").asJson().setApiVersion()).setDate("all")).search();
-//		for(Event e : events)
-//			log.debug(e);
-//		
-//		events = ((EventsGet) ((EventsGet) bandsintown.getEvents.setArtist("tale of us")).setDate("2014-11-07,2014-12-12").setApiVersion()).search();
-//		for(Event e : events)
-//			log.debug(e);
-//		
-//		artist = ((ArtistGet) bandsintown.getArtist.setArtist("naked famous").setAppId().setApiVersion()).search();
-//		System.out.println(artist);
-//		
-//		events = ((EventsGet) ((EventsGet) bandsintown.getEvents.setArtist("a great big pile of leaves")).setDate("all").setApiVersion()).search();
-//		for(Event e : events)
-//			log.debug(e);
-//		
-//		events = ((EventsGet) ((EventsGet) bandsintown.getEvents.setArtist("metallica")).setDate("all").setApiVersion()).search();
-//		for(Event e : events)
-//			log.debug(e);
-	
-		artist  = ((ArtistGet) bandsintown.getArtist.setArtist("nobraino").asJson().setApiVersion().setAppId()).search();
+		artist = bandsintown.getArtist.setArtist("pearl jam").asJson().search();
 		log.debug(artist);
 		
-		events = ((EventsGet) bandsintown.getEvents.setArtist("nobraino").setApiVersion().setAppId().asJson()).search();
+		events = bandsintown.getEvents.setArtist("empire empire").asJson().setDate("all").search();
+		for(Event e : events)
+			log.debug(e);
+		
+		events = bandsintown.getEvents.setArtist("tale of us").setDate("2014-11-07,2014-12-12").search();
+		for(Event e : events)
+			log.debug(e);
+		
+		artist = bandsintown.getArtist.setArtist("naked famous").search();
+		System.out.println(artist);
+		
+		events = bandsintown.getEvents.setArtist("a great big pile of leaves").setDate("all").search();
+		for(Event e : events)
+			log.debug(e);
+		
+		events = bandsintown.getEvents.setArtist("metallica").setDate("all").search();
+		for(Event e : events)
+			log.debug(e);
+	
+		artist  = bandsintown.getArtist.setArtist("nobraino").asJson().search();
+		log.debug(artist);
+		
+		events = bandsintown.getEvents.setArtist("nobraino").setDate("all").asJson().search();
+		for(Event e : events)
+			log.debug(e);
+
 	}
 
 }

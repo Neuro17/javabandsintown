@@ -2,8 +2,6 @@ package requests;
 
 import http.BandsintownConnector;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.apache.http.client.utils.URIBuilder;
@@ -25,20 +23,31 @@ public class EventsGet extends BandsintownConnector{
 		uriBld.setPath(BandsintownConfig.getArtistPath());
 	}
 	
-	public BandsintownConnector setArtist(String name){
+	public EventsGet setArtist(String name){
 		log.trace("Entering setArtist");
 		uriBld.setPath(BandsintownConfig.getArtistPath() + "/" + name + "/events");
 		log.trace("Exiting setArtist");
 		return this;
 	}
 	
-	public BandsintownConnector setDate(String date){
+	public EventsGet setDate(String date){
 		log.trace("Entering setDate");
 		uriBld.setParameter(Paramaters.getDate(), date);
 		log.trace("Exiting setDate");
 		return this;
 	}
-
+	
+	public EventsGet asJson(){
+		return (EventsGet) super.asJson();
+	}
+	
+	public EventsGet asXML(){
+		return (EventsGet) super.asXML();
+	}
+	
+	public EventsGet setArtistID(String id){
+		return (EventsGet) super.setArtistID(id);
+	}
 
 	public ArrayList<Event> search() {
 		log.trace("Entering search");

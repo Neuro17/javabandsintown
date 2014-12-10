@@ -31,6 +31,18 @@ public class ArtistGet extends BandsintownConnector{
 		return this;
 	}
 	
+	public ArtistGet asJson(){
+		return (ArtistGet) super.asJson();
+	}
+	
+	public ArtistGet asXML(){
+		return (ArtistGet) super.asXML();
+	}
+	
+	public ArtistGet setArtistID(String id){
+		return (ArtistGet) super.setArtistID(id);
+	}
+	
 	public Artist search(){
 		log.trace("Entering search");
 		JsonObject artistAsJson;

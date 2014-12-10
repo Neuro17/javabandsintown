@@ -13,8 +13,6 @@ public class BandsintownConfig {
 	
 	private static String apiVersion = "2.0";
 
-	
-
 	public static String getApiVersion() {
 		return apiVersion;
 	}
