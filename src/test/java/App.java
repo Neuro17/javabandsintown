@@ -23,34 +23,34 @@ public class App {
 //		
 //		String mbid = "9282c8b4-ca0b-4c6b-b7e3-4f7762dfc4d6";
 		
-		artist = bandsintown.getArtist.setArtist("pearl jam").asJson().search();
-		log.debug(artist);
-		
-		events = bandsintown.getEvents.setArtist("empire empire").asJson().setDate("all").search();
+//		artist = bandsintown.getArtist.setArtist("pearl jam").asJson().search();
+//		log.debug(artist);
+//		
+//		events = bandsintown.getEvents.setArtist("empire empire").asJson().setDate("all").search();
+//		for(Event e : events)
+//			log.debug(e);
+//		
+//		events = bandsintown.getEvents.setArtist("tale of us").setDate("2014-11-07,2014-12-12").search();
+//		for(Event e : events)
+//			log.debug(e);
+//		
+//		artist = bandsintown.getArtist.setArtist("naked famous").search();
+//		System.out.println(artist);
+//		
+//		events = bandsintown.getEvents.setArtist("a great big pile of leaves").setDate("all").search();
+//		for(Event e : events)
+//			log.debug(e);
+//		
+//		events = bandsintown.getEvents.setArtist("metallica").setDate("all").search();
+//		for(Event e : events)
+//			log.debug(e);
+//	
+//		artist  = bandsintown.getArtist.setArtist("nobraino").asJson().search();
+//		log.debug(artist);
+//		
+		events = bandsintown.getEvents.setArtist("marta sui tubi").setDate("all").asJson().search();
 		for(Event e : events)
-			log.debug(e);
-		
-		events = bandsintown.getEvents.setArtist("tale of us").setDate("2014-11-07,2014-12-12").search();
-		for(Event e : events)
-			log.debug(e);
-		
-		artist = bandsintown.getArtist.setArtist("naked famous").search();
-		System.out.println(artist);
-		
-		events = bandsintown.getEvents.setArtist("a great big pile of leaves").setDate("all").search();
-		for(Event e : events)
-			log.debug(e);
-		
-		events = bandsintown.getEvents.setArtist("metallica").setDate("all").search();
-		for(Event e : events)
-			log.debug(e);
-	
-		artist  = bandsintown.getArtist.setArtist("nobraino").asJson().search();
-		log.debug(artist);
-		
-		events = bandsintown.getEvents.setArtist("nobraino").setDate("all").asJson().search();
-		for(Event e : events)
-			log.debug(e);
+			log.debug(e.getDatetime() +" " + e.getVenue().getCity() + " " + e.getVenue().getCountry());
 
 	}
 
