@@ -50,18 +50,43 @@ public class TimezoneTest {
 //imposto fuso orario di riferimento quello di londra
 		TimeZone.getTimeZone("Europe/London");
 //ottengo timezoneId per ogni citta degli eventi
-		events = bandsintown.getEvents.setArtist("david guetta").asJson().setDate("upcoming").search();
+//		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").searchGMTReferences();
 //		for(Event e : events)
 //			log.debug(gng	.setLat(e.getVenue().getLatitude())
 //							.setLng(e.getVenue().getLongitude())
 //							.setUsername()
 //							.search());
 //calcolo ore da aggiungere alla TimeZone di default
+//		for(Event e : events)
+//			log.trace("Ore da aggiungere alla TimeZone 'Europe/London'" +TimeZone.getTimeZone
+//					(gng	.setLat(e.getVenue().getLatitude())
+//							.setLng(e.getVenue().getLongitude())
+//							.setUsername()
+//							.search())
+//					.getRawOffset()/3600000);
+
+//stampo città data orario e relativo MGT+/-Hours		
+//		for(Event e : events){
+//			int timeToAdd = gng.getHoursToAddToGMT(e.getVenue().getLatitude(), e.getVenue().getLongitude()); 
+//			log.trace(	"City:" + e.getVenue().getCity() +
+//						" Date: " + e.getDatetime().getDayOfMonth() + "-" + e.getDatetime().getMonthOfYear() + "-" + e.getDatetime().getYear() +
+//							" Hour: " + e.getDatetime().getHourOfDay() + ":" + e.getDatetime().getMinuteOfHour() + " (GMT" +  
+//						 ((timeToAdd>0)? "+" + timeToAdd :timeToAdd )+ ")");
+//			}
+
+//test aggiunta 12 ore a tutti i risultati
+//		for(Event e : events){
+//		int timeToAdd = gng.getHoursToAddToGMT(e.getVenue().getLatitude(), e.getVenue().getLongitude()); 
+//		log.trace(	" \nDate: " + e.getDatetime().getDayOfMonth() + "-" + e.getDatetime().getMonthOfYear() + "-" + e.getDatetime().getYear() +
+//					" Hour: " + e.getDatetime().getHourOfDay() + ":" + e.getDatetime().getMinuteOfHour() + " (GMT" +  
+//					((timeToAdd>0)? "+" + timeToAdd :timeToAdd )+ ")" +
+//					" \nDate: " + e.getDatetime().plusHours(12).getDayOfMonth() + "-" + e.getDatetime().plusHours(12).getMonthOfYear() + "-" + e.getDatetime().plusHours(12).getYear() +
+//					" Hour(+6): " + e.getDatetime().plusHours(12).getHourOfDay() + ":" + e.getDatetime().plusHours(12).getMinuteOfHour() + " (GMT" +  
+//					((timeToAdd>0)? "+" + timeToAdd :timeToAdd )+ ")" );
+//		}
+//		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
+		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
 		for(Event e : events)
-			log.trace("Ore da aggiungere alla TimeZone 'Europe/London'" +
-					"" +TimeZone.getTimeZone(gng	.setLat(e.getVenue().getLatitude())
-													.setLng(e.getVenue().getLongitude())
-													.setUsername()
-													.search()).getRawOffset()/3600000);
+			log.trace(e.getVenue().getCity() + " - " + e.getDatetime());
 	}
 }

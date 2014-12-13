@@ -62,4 +62,17 @@ public class EventsGet extends BandsintownConnector{
 		
 	}
 
+	//TODO controllare
+	public ArrayList<Event> searchGMTReferences() {
+		log.trace("Entering search");
+		JsonObject events;
+		
+		build();
+		events = executeRequest(uri);
+		log.debug(events);
+//		return null;
+		log.trace("Exiting search");
+		return Extractor.extractGMTReferencesEvents(events);
+		
+	}
 }

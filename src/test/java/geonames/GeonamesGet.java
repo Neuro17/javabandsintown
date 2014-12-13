@@ -1,5 +1,7 @@
 package geonames;
 
+import java.util.TimeZone;
+
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -64,5 +66,18 @@ public class GeonamesGet extends GeonamesConnector{
 //		log.trace("Exiting search from geonames.org");
 		
 		return s;
+	}
+	
+	public int getHoursToAddToGMT(double lat, double lng){
+		setLat(lat);
+		setLng(lng);
+		setUsername();
+		return TimeZone.getTimeZone(search()).getRawOffset()/3600000;
+	}
+	
+	public String getGMTStandard(){
+		
+		
+		return null;
 	}
 }

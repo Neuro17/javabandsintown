@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 import entity.Artist;
 import entity.Event;
 import entity.Venue;
+import geonames.GeonamesGet;
 
 public class Extractor {
 	
@@ -38,6 +39,22 @@ public class Extractor {
 		return events;
 	}
 	
+	//TODO controllare
+	public static ArrayList<Event> extractGMTReferencesEvents(JsonElement item){
+		log.trace("Entering extractEvents");
+		ArrayList<Event> events = new ArrayList<Event>();
+		JsonObject eventsAsJson = item.getAsJsonObject();
+		
+		log.debug(item);
+		log.debug(eventsAsJson);
+		
+		for(JsonElement e : eventsAsJson.get("resultsPage").getAsJsonArray()){
+			events.add(extractGMTReferencesEvent(e));
+		}
+		log.trace("Exiting extractEvents");
+		return events;
+	}
+	
 	public static Event extractEvent(JsonElement item){
 		log.trace("Entering extractEvent");
 		JsonObject eventsAsJson = item.getAsJsonObject();
@@ -53,6 +70,36 @@ public class Extractor {
 			event.setDescription(eventsAsJson.get("description").getAsString());
 		
 		log.trace("Exiting extractEvent");
+		return event;
+	}
+	
+	//TODO controllare
+	public static Event extractGMTReferencesEvent(JsonElement item){
+		//TODO doing ...
+		log.trace("Entering extractGMTReferencesEvent");
+		
+		JsonObject eventsAsJson = item.getAsJsonObject();
+		Event event = new Event();
+		GeonamesGet gng = new GeonamesGet();
+		int timeToAdd;
+		DateTime tmpDateTime;
+		
+		event.setTitle(eventsAsJson.get("title").getAsString());
+		event.setArtist(extractArtists(eventsAsJson.get("artists")));
+		event.setId(eventsAsJson.get("id").getAsInt());
+		
+		event.setVenue(extractVenue(eventsAsJson.get("venue")));
+		tmpDateTime = new DateTime(eventsAsJson.get("datetime").getAsString());
+		timeToAdd = gng.getHoursToAddToGMT(event.getVenue().getLatitude(), event.getVenue().getLongitude());
+//sottraggo le ore da aggiungere al GMT		
+		event.setDatetime(new DateTime(tmpDateTime.minusHours(timeToAdd)));
+		
+		log.trace("/ntmp - " + tmpDateTime + "\nfnl- " + event.getDatetime());
+		
+		if(!eventsAsJson.get("description").isJsonNull())
+			event.setDescription(eventsAsJson.get("description").getAsString());
+		
+		log.trace("Exiting extractGMTReferencesEvent");
 		return event;
 	}
 	
@@ -75,7 +122,7 @@ public class Extractor {
 		log.trace("Exiting extractVenue");
 		return venue;
 	}
-
+	
 	public static ArrayList<Artist> extractArtists(JsonElement jsonElement) {
 		log.trace("Entering extractArtists");
 		JsonArray artistsAsJson = jsonElement.getAsJsonArray();
@@ -101,5 +148,6 @@ public class Extractor {
 		log.trace("Exiting extractArtist");
 		return artist;
 	}
+	
 	
 }
