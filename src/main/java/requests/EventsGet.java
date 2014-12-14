@@ -62,7 +62,6 @@ public class EventsGet extends BandsintownConnector{
 		
 	}
 
-	//TODO controllare
 	public ArrayList<Event> searchGMTReferences() {
 		log.trace("Entering search");
 		JsonObject events;

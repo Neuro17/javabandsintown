@@ -27,10 +27,11 @@ public class TimezoneTest {
 //		System.out.println("Ore da aggiungere a GMT per avere l'ora US/Hawaii: " +TimeZone.getTimeZone("US/Hawaii").getRawOffset()/3600000);
 //		System.out.println("La nostra ora rispetta quella legale: " +TimeZone.getDefault().observesDaylightTime());
 
-		GeonamesGet gng = new GeonamesGet();
-//		ArrayList<Event> events = new ArrayList<Event>();
+//		GeonamesGet gng = new GeonamesGet();
 		Bandsintown bandsintown = new Bandsintown();
 		ArrayList<Event> events = null;
+		ArrayList<Event> eventsGMT = null;
+		
 //test validità url
 //		System.out.println(gng.setLat("47.01").setLng("10.2").setUsername());
 
@@ -48,7 +49,7 @@ public class TimezoneTest {
 //											" - nimutes: " + e.getDatetime().getMinuteOfHour());
 
 //imposto fuso orario di riferimento quello di londra
-		TimeZone.getTimeZone("Europe/London");
+//		TimeZone.getTimeZone("Europe/London");
 //ottengo timezoneId per ogni citta degli eventi
 //		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").searchGMTReferences();
 //		for(Event e : events)
@@ -86,7 +87,9 @@ public class TimezoneTest {
 //		}
 //		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
 		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
-		for(Event e : events)
-			log.trace(e.getVenue().getCity() + " - " + e.getDatetime());
+		eventsGMT = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").searchGMTReferences();	
+		for(int i=0;i<events.size();i++){
+			log.trace("\n" + events.get(i).getDatetime() + "\n" + eventsGMT.get(i).getDatetime() );
+		}
 	}
 }

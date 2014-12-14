@@ -1,6 +1,7 @@
 package requests;
 
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,7 +40,6 @@ public class Extractor {
 		return events;
 	}
 	
-	//TODO controllare
 	public static ArrayList<Event> extractGMTReferencesEvents(JsonElement item){
 		log.trace("Entering extractEvents");
 		ArrayList<Event> events = new ArrayList<Event>();
@@ -73,14 +73,14 @@ public class Extractor {
 		return event;
 	}
 	
-	//TODO controllare
 	public static Event extractGMTReferencesEvent(JsonElement item){
-		//TODO doing ...
 		log.trace("Entering extractGMTReferencesEvent");
 		
 		JsonObject eventsAsJson = item.getAsJsonObject();
 		Event event = new Event();
 		GeonamesGet gng = new GeonamesGet();
+//setting timeZoneReferences to Europe/London
+		TimeZone.getTimeZone("Europe/London");
 		int timeToAdd;
 		DateTime tmpDateTime;
 		
