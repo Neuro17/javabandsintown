@@ -2,9 +2,6 @@ package requests;
 
 import http.BandsintownConnector;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +23,9 @@ public class ArtistGet extends BandsintownConnector{
 
 	public ArtistGet setArtist(String name){
 		log.trace("Entering setArtist");
+		
 		uriBld.setPath(BandsintownConfig.getArtistPath() + "/" + name);
+		
 		log.trace("Exiting setArtist");
 		return this;
 	}
@@ -49,8 +48,10 @@ public class ArtistGet extends BandsintownConnector{
 		
 		build();
 		log.debug(uri);
-		artistAsJson = executeRequest(uri);
+		
+		artistAsJson = executeRequest();
 		log.debug(artistAsJson);
+		
 		log.trace("Exiting search");
 		return Extractor.extractArtist(artistAsJson);
 	}

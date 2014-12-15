@@ -148,6 +148,21 @@ public class Extractor {
 		log.trace("Exiting extractArtist");
 		return artist;
 	}
+
+	public static ArrayList<Venue> extractVenues(JsonElement item) {
+		log.trace("Entering extractEvents");
+		ArrayList<Venue> venues = new ArrayList<Venue>();
+		JsonObject venuesAsJson = item.getAsJsonObject();
+		
+//		log.debug(item);
+//		log.debug(venuesAsJson);
+		
+		for(JsonElement e : venuesAsJson.get("resultsPage").getAsJsonArray()){
+			venues.add(extractVenue(e));
+		}
+		log.trace("Exiting extractEvents");
+		return venues;
+	}
 	
 	
 }

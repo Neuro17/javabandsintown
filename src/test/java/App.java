@@ -8,6 +8,7 @@ import requests.EventsGet;
 import search.Bandsintown;
 import entity.Artist;
 import entity.Event;
+import entity.Venue;
 
 
 public class App {
@@ -17,12 +18,12 @@ public class App {
 	public static void main(String[] args) {
 		Artist artist;
 		ArrayList<Event> events = new ArrayList<Event>();
+		ArrayList<Venue> venues = new ArrayList<Venue>();
 		Bandsintown bandsintown = new Bandsintown();
 		
-//		bandsintown.getArtist.setArtist("nirvana").asXML().build();
 //		
 //		String mbid = "9282c8b4-ca0b-4c6b-b7e3-4f7762dfc4d6";
-		
+//		
 //		artist = bandsintown.getArtist.setArtist("pearl jam").asJson().search();
 //		log.debug(artist);
 //		
@@ -48,10 +49,27 @@ public class App {
 //		artist  = bandsintown.getArtist.setArtist("nobraino").asJson().search();
 //		log.debug(artist);
 //		
-		events = bandsintown.getEvents.setArtist("marta sui tubi").setDate("all").asJson().search();
-		for(Event e : events)
-			log.debug(e.getDatetime() +" " + e.getVenue().getCity() + " " + e.getVenue().getCountry());
+//		events = bandsintown.getEvents.setArtist("marta sui tubi").setDate("all").asJson().search();
+//		for(Event e : events)
+//			log.debug(e.getDatetime() +" " + e.getVenue().getCity() + " " + e.getVenue().getCountry());
 
+		venues = bandsintown.getVenues.query("london").asJson().setPerPage(100).search();
+		for (Venue v : venues) {
+			log.debug(v);
+		}
+		log.debug(venues.size());
+		
+		venues = bandsintown.getVenues.query("rome").setPerPage(100).setPage(1).asJson().search();
+		for (Venue v : venues) {
+			log.debug(v);
+		}
+		log.debug(venues.size());
+
+		venues.addAll(bandsintown.getVenues.nextPage());
+		for (Venue v : venues) {
+			log.debug(v);
+		}
+		log.debug(venues.size());
 	}
 
 }

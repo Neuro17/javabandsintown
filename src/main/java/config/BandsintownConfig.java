@@ -8,6 +8,8 @@ public class BandsintownConfig {
 	private static final String ARTIST_PATH = "/artists";
 	
 	private static final String EVENT_PATH = "/events";
+	
+	private static final String VENUE_PATH = "/venues";
 
 	private static String apiKey = "YOUR_APP_ID";
 	
@@ -35,6 +37,10 @@ public class BandsintownConfig {
 
 	public static String getEventPath() {
 		return EVENT_PATH;
+	}
+
+	public static String getVenuePath() {
+		return VENUE_PATH;
 	}
 
 	public static String getApiKey() {

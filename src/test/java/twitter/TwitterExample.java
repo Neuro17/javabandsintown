@@ -92,7 +92,7 @@ public class TwitterExample {
 			System.out.println("Entering getTweetByLocation");
 			query.setCount(100);
 			try {
-				if(DateTime.now().isAfter(event.getDatetime().minusHours(11))){
+				if(DateTime.now().isAfter(event.getDatetime().minusHours(2))){
 					results = twitter.search(query);
 					tweetsArrayList.addAll(results.getTweets());
 				}

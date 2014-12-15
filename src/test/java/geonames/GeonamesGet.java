@@ -58,7 +58,7 @@ public class GeonamesGet extends GeonamesConnector{
 		
 		build();
 //		log.debug(uri);
-		geoNamesAsJson = executeRequest(uri);
+		geoNamesAsJson = executeRequest();
 //		log.debug(geoNamesAsJson);
 		
 		s = geoNamesAsJson.getAsJsonObject().get("timezoneId").getAsString();

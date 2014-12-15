@@ -24,6 +24,7 @@ public abstract class HttpConnectorImpl {
 	protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	protected URIBuilder uriBld;
 	protected URL url;
+	protected URI uri;
 	
 	protected JsonObject getJsonResponse() {
 		return jsonResponse;
@@ -36,11 +37,12 @@ public abstract class HttpConnectorImpl {
 	 * @return JsonObject
 	 * @throws IOException 
 	 */
-	protected JsonObject executeRequest(URI uri){
+	protected JsonObject executeRequest(){
 		log.trace("Entering executeRequest");
 		InputStream response = null;
 		
 		try {
+			log.debug(uri);
 			url = uri.toURL();
 		} catch (MalformedURLException e1) {
 			
@@ -66,7 +68,7 @@ public abstract class HttpConnectorImpl {
 			log.error("Unknown artist");
 			jsonResponse =  null;
 		}
-
+		uriBld.clearParameters();
 		log.trace("Exiting executeRequest");
 		return jsonResponse;
 	}

@@ -16,7 +16,7 @@ public abstract class GeonamesConnector extends HttpConnectorImpl{
 
 	private final Logger log = LogManager.getLogger(GeonamesConnector.class);
 	protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	protected URI uri;
+//	protected URI uri;
 		
 	protected URI getUri() {
 		return uri;

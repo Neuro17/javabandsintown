@@ -32,7 +32,7 @@ public class EventsGet extends BandsintownConnector{
 	
 	public EventsGet setDate(String date){
 		log.trace("Entering setDate");
-		uriBld.setParameter(Paramaters.getDate(), date);
+		uriBld.setParameter(Parameters.getDate(), date);
 		log.trace("Exiting setDate");
 		return this;
 	}
@@ -54,7 +54,7 @@ public class EventsGet extends BandsintownConnector{
 		JsonObject events;
 		
 		build();
-		events = executeRequest(uri);
+		events = executeRequest();
 		log.debug(events);
 //		return null;
 		log.trace("Exiting search");
@@ -67,7 +67,7 @@ public class EventsGet extends BandsintownConnector{
 		JsonObject events;
 		
 		build();
-		events = executeRequest(uri);
+		events = executeRequest();
 		log.debug(events);
 //		return null;
 		log.trace("Exiting search");
