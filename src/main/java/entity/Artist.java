@@ -1,8 +1,28 @@
 package entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+
+@Entity 
+@Table(name="Artist",
+	uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
+
 public class Artist {
-	private String name;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	// nullable=true per i casi un cui lo sia
+	@Column(name="id", nullable=true, unique=false)
 	private String id;
+
+	@Column(name="name", nullable=true)
+	private String name;
+	
 	
 	public Artist(String name, String id){
 		this.name = name;

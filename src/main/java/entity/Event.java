@@ -2,14 +2,38 @@ package entity;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
+import javax.persistence.UniqueConstraint;
+
+@Entity
+@Table(name="Event",
+		uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
 
 public class Event {
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="ID", nullable=false, unique=true)
 	private Integer id;
+	
+	@Column(name="title", nullable=true)
 	private String title;
+	
+	@Column(name="datetime", nullable=true)
 	private DateTime datetime;
+	
+	@Column(name="description", nullable=true)
 	private String description;
+
 	private ArrayList<Artist> artist;
+	
 	private Venue venue;
 	
 	public Event(Integer id, String title, DateTime datetime, String description, ArrayList<Artist> artist, Venue venue) {
