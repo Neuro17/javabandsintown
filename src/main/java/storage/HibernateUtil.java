@@ -43,7 +43,11 @@ public class HibernateUtil {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             Configuration configuration = new Configuration();
-            configuration.configure("hibernate-annotation.cfg.xml");
+            
+//da modificare a seconda dei casi            
+            configuration.configure("hibernate-annotation-artist.cfg.xml");
+
+            
             System.out.println("Hibernate Annotation Configuration loaded");
              
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

@@ -13,7 +13,7 @@ public class HibernateAnnotation{
     public static void main(String[] args) {
 //TODO in hibernate-annotation.cfg.xml c'è da modificare il tag <mapping class= > volta per volta in base 
 //alla classe, conviene fare 4 file xml di configurazione per le annotazioni?
-    	Artist a = new Artist("salmo", "slm");
+    	Artist a = new Artist("fabri fibra", "1");
 
         //Get Session
         SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
@@ -24,7 +24,7 @@ public class HibernateAnnotation{
         session.save(a);
         //Commit transaction
         session.getTransaction().commit();
-        System.out.println("Employee ID="+a.getId());
+        System.out.println("Stored=" + a);
          
         //terminate session factory, otherwise program won't end
         sessionFactory.close();
