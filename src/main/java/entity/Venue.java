@@ -2,15 +2,30 @@ package entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 
 @Entity
 @Table(name="Venue",
-		uniqueConstraints={@UniqueConstraint(columnNames={"latitude","longitude"})})
-
+	uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+/*
+ * `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(20) DEFAULT NULL,
+`region` varchar(20) DEFAULT NULL,
+`country` varchar(20) DEFAULT NULL,
+`city` varchar(20) DEFAULT NULL,
+`latitude` float default null,
+`longitude` float default null,
+*/
 public class Venue {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", nullable=false)
+	private int id;
 	
 	@Column(name="latitude", nullable=false)
 	private double latitude;
@@ -30,6 +45,14 @@ public class Venue {
 	@Column(name="city", nullable=true)
 	private String city;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public double getLatitude() {
 		return latitude;
 	}

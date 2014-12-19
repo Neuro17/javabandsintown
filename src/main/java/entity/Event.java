@@ -14,14 +14,13 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="Event",
-		uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
+	uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
 
 public class Event {
-	
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID", nullable=false, unique=true)
-	private Integer id;
+    @Column(name="id", nullable=false, unique=false)
+	private int id;
 	
 	@Column(name="title", nullable=true)
 	private String title;

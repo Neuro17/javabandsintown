@@ -8,16 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
 @Entity 
 @Table(name="Artist",
-	uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
+	uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 
 public class Artist {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	// nullable=true per i casi un cui lo sia
-	@Column(name="id", nullable=true, unique=false)
+	@Column(name="id", nullable=false, unique=false)
 	private String id;
 
 	@Column(name="name", nullable=true)
