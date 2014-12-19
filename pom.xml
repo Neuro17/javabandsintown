@@ -55,6 +55,7 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.5</version>
 		</dependency>
+		
         <!-- spring hibernate dependancies -->
         <!-- Spring and Transactions -->
         <dependency>
@@ -108,20 +109,7 @@
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
-        
-<!-- 		da cancellare -->
-<dependency>
-		<groupId>org.twitter4j</groupId>
-		<artifactId>twitter4j-core</artifactId>
-		<version>4.0.2</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.twitter4j</groupId>
-		<artifactId>twitter4j-stream</artifactId>
-		<version>4.0.2</version>
-	</dependency>
-		
+        		
 	</dependencies>
 	
 	<build>

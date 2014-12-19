@@ -12,6 +12,7 @@ import config.BandsintownConfig;
 import entity.Artist;
 
 public class ArtistGet extends BandsintownConnector{
+	
 	private static final Logger log = LogManager.getLogger(ArtistGet.class);
 	
 	public ArtistGet(){
