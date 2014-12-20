@@ -9,8 +9,8 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/concerts" />
-        <property name="username" value="root" />
+        <property name="url" value="jdbc:mysql://localhost/concerts" />
+        <property name="username" value="root"/>
         <property name="password" value="mysql" />
     </bean>
  
@@ -37,7 +37,6 @@
         <property name="annotatedClasses">
             <list>
                 <value>entity.Artist</value>
-                <value>entity.Venue</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -49,10 +48,7 @@
         </property>
     </bean>
      
-    <bean id="artistDAO" class="storage.ArtistDAOImpl">
+    <bean id="artistDAO" class="DAO.ArtistDAOImpl">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
-    </bean> 
-    <bean id="venueDAO" class="storage.VenueDAOImpl">
-        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
-    </bean> 
+    </bean>
 </beans>

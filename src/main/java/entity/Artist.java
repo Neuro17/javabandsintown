@@ -2,25 +2,20 @@ package entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity 
-@Table(name="Artist",
-	uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name="artists")
 
 public class Artist {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false, unique=false)
-	private String id;
 
-	@Column(name="name", nullable=true)
+	@Id
+	@Column(name="artist_name", nullable=true)
 	private String name;
 	
+	@Column(name="artist_id", nullable=false, unique=false)
+	private String id;
 	
 	public Artist(String name, String id){
 		this.name = name;

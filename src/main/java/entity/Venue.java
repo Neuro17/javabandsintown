@@ -2,16 +2,12 @@ package entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name="Venue",
-	uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name="venues")
 /*
  * `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
 `name` varchar(20) DEFAULT NULL,
@@ -23,17 +19,16 @@ import javax.persistence.UniqueConstraint;
 */
 public class Venue {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
+	@Column(name="venue_id", nullable=false)
 	private int id;
 	
-	@Column(name="latitude", nullable=false)
+	@Column(name="lat", nullable=false)
 	private double latitude;
 
-	@Column(name="longitude", nullable=false)
+	@Column(name="lng", nullable=false)
 	private double longitude;
 	
-	@Column(name="name", nullable=true)
+	@Column(name="venue_name", nullable=true)
 	private String name;
 	
 	@Column(name="region", nullable=true)
