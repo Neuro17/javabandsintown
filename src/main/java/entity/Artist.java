@@ -5,6 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+create table if not exists concerts.artists(
+	artist_name varchar(25) not null primary key,
+	artist_id int unsigned,
+	constraint unique(artist_id));
+*/
+
 @Entity 
 @Table(name="artists")
 
@@ -14,12 +21,12 @@ public class Artist {
 	@Column(name="artist_name", nullable=true)
 	private String name;
 	
-	@Column(name="artist_id", nullable=false, unique=false)
-	private String id;
+	@Column(name="artist_id", nullable=true, unique=false)
+	private int id;
 	
 	public Artist(String name, String id){
 		this.name = name;
-		this.id = id;
+		this.id = Integer.parseInt(id);
 	}
 	
 	public Artist(String name) {
@@ -35,11 +42,11 @@ public class Artist {
 	}
 
 	public String getId() {
-		return id;
+		return Integer.toString(id);
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.id = Integer.parseInt(id);
 	}
 
 	@Override

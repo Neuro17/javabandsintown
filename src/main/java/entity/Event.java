@@ -12,23 +12,28 @@ import javax.persistence.Table;
 import org.joda.time.DateTime;
 import javax.persistence.UniqueConstraint;
 
+/*
+  create table if not exists concerts.`events`(
+	event_id int unsigned not null primary key,
+	title varchar(100),
+	event_date varchar(25) null,
+	venue_id int unsigned null,
+	constraint foreign key (venue_id) references concerts.venues(venue_id));
+*/
+
 @Entity
-@Table(name="Event",
-	uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
+@Table(name="events")
 
 public class Event {
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=false)
+    @Column(name="event_id", nullable=false)
 	private int id;
 	
-	@Column(name="title", nullable=true)
+	@Column(name="title")
 	private String title;
 	
-	@Column(name="datetime", nullable=true)
 	private DateTime datetime;
 	
-	@Column(name="description", nullable=true)
 	private String description;
 
 	private ArrayList<Artist> artist;

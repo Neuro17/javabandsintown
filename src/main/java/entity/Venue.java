@@ -2,6 +2,8 @@ package entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,17 +11,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name="venues")
 /*
- * `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(20) DEFAULT NULL,
-`region` varchar(20) DEFAULT NULL,
-`country` varchar(20) DEFAULT NULL,
-`city` varchar(20) DEFAULT NULL,
-`latitude` float default null,
-`longitude` float default null,
+
+create table if not exists concerts.venues(
+	venue_id int unsigned not null primary key AUTO_INCREMENT,
+	lat double not null,
+	lng double not null,
+	venue_name varchar(50) not null,
+	country varchar(20) not null,
+	city varchar(20) not null,
+	constraint unique_lat_lng unique(lat, lng)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 */
 public class Venue {
+	
 	@Id
 	@Column(name="venue_id", nullable=false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="lat", nullable=false)
@@ -28,17 +36,16 @@ public class Venue {
 	@Column(name="lng", nullable=false)
 	private double longitude;
 	
-	@Column(name="venue_name", nullable=true)
+	@Column(name="venue_name", nullable=false)
 	private String name;
 	
-	@Column(name="region", nullable=true)
-	private String region;
-	
-	@Column(name="country", nullable=true)
+	@Column(name="country", nullable=false)
 	private String country;
 	
-	@Column(name="city", nullable=true)
+	@Column(name="city", nullable=false)
 	private String city;
+
+	private String region;
 	
 	public int getId() {
 		return id;

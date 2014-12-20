@@ -37,6 +37,8 @@
         <property name="annotatedClasses">
             <list>
                 <value>entity.Artist</value>
+                <value>entity.Event</value>
+                <value>entity.Venue</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -49,6 +51,14 @@
     </bean>
      
     <bean id="artistDAO" class="DAO.ArtistDAOImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+    </bean>
+     
+    <bean id="venueDAO" class="DAO.VenueDAOImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+    </bean>
+     
+    <bean id="eventDAO" class="DAO.EventDAOImpl">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
     </bean>
 </beans>
