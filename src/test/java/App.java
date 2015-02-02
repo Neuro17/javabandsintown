@@ -24,10 +24,13 @@ public class App {
 //		
 //		String mbid = "9282c8b4-ca0b-4c6b-b7e3-4f7762dfc4d6";
 //		
-		artist = bandsintown.getArtist.setArtist("pearl jam").asJson().search();
+
+ 		
+		artist = bandsintown.getArtist.setArtist("manu chao").asJson().search();
 		log.debug(artist);
 		
-		events = bandsintown.getEvents.setArtist("empire empire").asJson().setDate("all").search();
+ 
+		events = bandsintown.getEvents.setArtist("paul kalkbrenner").asJson().setDate("all").search();
 		for(Event e : events)
 			log.debug(e);
 		
@@ -35,7 +38,7 @@ public class App {
 		for(Event e : events)
 			log.debug(e);
 		
-		artist = bandsintown.getArtist.setArtist("naked famous").search();
+		artist = bandsintown.getArtist.setArtist("beyoncè").search();
 		System.out.println(artist);
 		
 		events = bandsintown.getEvents.setArtist("a great big pile of leaves").setDate("all").search();
