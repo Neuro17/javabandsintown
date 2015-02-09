@@ -9,13 +9,12 @@ import javax.persistence.Table;
 @Table(name="artists")
 
 public class Artist {
-//TODO modifica tabella e relazioni
 	@Id
-	@Column(name="artist_name", nullable=true)
-	private String name;
-	
-	@Column(name="artist_id", nullable=true, unique=false)
+	@Column(name="artist_id")
 	private String id;
+	
+	@Column(name="artist_name")
+	private String name;
 	
 	public Artist(String name, String id){
 		this.name = name;

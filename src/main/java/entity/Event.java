@@ -2,42 +2,44 @@ package entity;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 import javax.persistence.UniqueConstraint;
-
-/*
-  create table if not exists concerts.`events`(
-	event_id int unsigned not null primary key,
-	title varchar(100),
-	event_date varchar(25) null,
-	venue_id int unsigned null,
-	constraint foreign key (venue_id) references concerts.venues(venue_id));
-*/
 
 @Entity
 @Table(name="events")
 
 public class Event {
 	@Id
-    @Column(name="event_id", nullable=false)
+    @Column(name="event_id")
 	private int id;
 	
-	@Column(name="title")
+	@Column(name="event_title")
 	private String title;
 	
+//	@Column(name="event_date")
 	private DateTime datetime;
 	
+	@Column(name="event_description")
 	private String description;
 
+//	@ManyToOne(orphanRemoval=true,cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name="artist_id")
 	private ArrayList<Artist> artist;
 	
+//	@ManyToOne(fetch=FetchType.LAZY)
+//	@JoinColumn(name="venue_id",referencedColumnName="venue_id")
 	private Venue venue;
 	
 	public Event(Integer id, String title, DateTime datetime, String description, ArrayList<Artist> artist, Venue venue) {

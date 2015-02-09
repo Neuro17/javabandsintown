@@ -10,39 +10,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="venues")
-/*
 
-create table if not exists concerts.venues(
-	venue_id int unsigned not null primary key AUTO_INCREMENT,
-	lat double not null,
-	lng double not null,
-	venue_name varchar(50) not null,
-	country varchar(20) not null,
-	city varchar(20) not null,
-	constraint unique_lat_lng unique(lat, lng)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-*/
 public class Venue {
 	
 	@Id
-	@Column(name="venue_id", nullable=false)
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="venue_id")
 	private int id;
 	
-	@Column(name="lat", nullable=false)
+	@Column(name="lat")
 	private double latitude;
 
-	@Column(name="lng", nullable=false)
+	@Column(name="lng")
 	private double longitude;
 	
-	@Column(name="venue_name", nullable=false)
+	@Column(name="venue_name")
 	private String name;
 	
-	@Column(name="country", nullable=false)
+	@Column(name="country")
 	private String country;
 	
-	@Column(name="city", nullable=false)
+	@Column(name="city")
 	private String city;
 
 	private String region;
