@@ -4,8 +4,9 @@ create database if not exists `concerts_db`;
 #drop table `concerts_db`.`artists`;
 
 create table if not exists `concerts_db`.`artists`(
+    artist_id varchar(30),
 	artist_name varchar(30),
-    artist_id varchar(10) primary key
+    primary key(artist_id)
 );
 
 #drop table `concerts_db`.`events`;
@@ -26,3 +27,6 @@ create table if not exists `concerts_db`.`venues`(
     country varchar(30),
     city varchar(30)
 );
+
+select *
+from `concerts_db`.`artists`;

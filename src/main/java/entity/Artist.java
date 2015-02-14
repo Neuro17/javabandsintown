@@ -5,16 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name="artists")
-
+@Entity
+@Table(name = "artists")
 public class Artist {
-	@Id
-	@Column(name="artist_id")
-	private String id;
 	
-	@Column(name="artist_name")
+	@Id
+	@Column(name = "artist_id")
+	private String id;
+
+	@Column(name = "artist_name")
 	private String name;
+	
+	public Artist(){
+	}
 	
 	public Artist(String name, String id){
 		this.name = name;

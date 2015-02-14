@@ -2,37 +2,38 @@ package entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="venues")
+@Table(name = "venues")
 
 public class Venue {
 	
 	@Id
-	@Column(name="venue_id")
+	@Column(name = "venue_id")
 	private int id;
 	
-	@Column(name="lat")
+	@Column(name = "lat")
 	private double latitude;
-
-	@Column(name="lng")
+	
+	@Column(name = "lng")
 	private double longitude;
 	
-	@Column(name="venue_name")
+	@Column(name = "venue_name")
 	private String name;
 	
-	@Column(name="country")
+	@Column(name = "venue_country")
 	private String country;
 	
-	@Column(name="city")
+	@Column(name = "venue_city")
 	private String city;
 
+	@Column(name = "venue_region")
 	private String region;
+	
+	public Venue(){
+	}
 	
 	public int getId() {
 		return id;

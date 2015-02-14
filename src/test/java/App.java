@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import requests.ArtistGet;
-import requests.EventsGet;
 import search.Bandsintown;
 import entity.Artist;
 import entity.Event;
