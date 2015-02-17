@@ -70,7 +70,7 @@ public class HibernateArtistTest {
 //		}
 //		System.out.println("*** FindAll - end ***");
 
-// 		DeleteAll no
+// 		DeleteAll ok
 		
 //		System.out.println("*** DeleteAll - start ***");
 //		artistService.deleteAll();

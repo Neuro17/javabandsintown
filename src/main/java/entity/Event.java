@@ -2,24 +2,36 @@ package entity;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
 
+@Entity
+@Table(name = "events")
 public class Event {
+	
+	@Id
+	@Column(name = "event_id")
 	private int id;
 	
+	@Column(name = "event_title")
 	private String title;
 	
-//	@Column(name="event_date")
 	private DateTime datetime;
 	
+	@Column(name = "event_description")
 	private String description;
 
-//	@ManyToOne(orphanRemoval=true,cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name="artist_id")
 	private ArrayList<Artist> artist;
-	
-//	@ManyToOne(fetch=FetchType.LAZY)
-//	@JoinColumn(name="venue_id",referencedColumnName="venue_id")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "venue_id", nullable = false)
 	private Venue venue;
 	
 	public Event(Integer id, String title, DateTime datetime, String description, ArrayList<Artist> artist, Venue venue) {
@@ -39,7 +51,9 @@ public class Event {
 		this.venue = venue;
 	}
 
-	public Event() {}
+	public Event() {
+		
+	}
 
 	public Integer getId() {
 		return id;
@@ -81,6 +95,7 @@ public class Event {
 		this.artist = artist;
 	}
 
+	
 	public Venue getVenue() {
 		return venue;
 	}

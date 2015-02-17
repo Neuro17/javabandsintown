@@ -14,5 +14,6 @@
    <property name="hibernate.current_session_context_class">thread</property>
    <mapping class="entity.Artist"/>
    <mapping class="entity.Venue"/>
+   <mapping class="entity.Event"/>
 </session-factory>
 </hibernate-configuration>
