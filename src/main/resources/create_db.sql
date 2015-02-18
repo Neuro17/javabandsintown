@@ -2,10 +2,11 @@ drop database `concerts_db`;
 create database `concerts_db`;
 
 drop table if exists `concerts_db`.`artists`;
+
 create table if not exists `concerts_db`.`artists`( 
 	artist_id varchar(50) not null, 
     artist_name varchar(50) not null, 
-	primary key (artist_id));
+	primary key (artist_name));
     
 select * from `concerts_db`.`artists`;
 
@@ -31,7 +32,7 @@ create table if not exists `concerts_db`.`events`(
 	event_id int not null,
     event_title varchar(50) default null,
 	event_description varchar(50) default null,
-	venue_id int not null references `concerts_db`.`venues`,
+	venue_id int not null references `concerts_db`.`venues` on delete cascade,
     primary key (event_id)
 );
 

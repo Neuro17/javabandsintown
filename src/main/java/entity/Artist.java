@@ -9,10 +9,10 @@ import javax.persistence.Table;
 @Table(name = "artists")
 public class Artist {
 	
-	@Id
 	@Column(name = "artist_id")
 	private String id;
 
+	@Id
 	@Column(name = "artist_name")
 	private String name;
 	

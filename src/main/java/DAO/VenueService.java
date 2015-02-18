@@ -13,15 +13,29 @@ public class VenueService {
 	}
 
 	public void persist(Venue entity) {
-		venueDao.openCurrentSessionwithTransaction();
-		venueDao.persist(entity);
-		venueDao.closeCurrentSessionwithTransaction();
+		VenueService venueServiceTmp = new VenueService();
+		Venue venue = venueServiceTmp.findById(entity.getId());
+		if(venue == null){
+			venueDao.openCurrentSessionwithTransaction();
+			venueDao.persist(entity);
+			venueDao.closeCurrentSessionwithTransaction();
+		}
+		else {
+			System.out.println("Venue with Id: " + entity.getId() + " already exists in DataBase");
+		}
 	}
 
 	public void update(Venue entity) {
-		venueDao.openCurrentSessionwithTransaction();
-		venueDao.update(entity);
-		venueDao.closeCurrentSessionwithTransaction();
+		VenueService venueServiceTmp = new VenueService();
+		Venue venue = venueServiceTmp.findById(entity.getId());
+		if(venue != null){		
+			venueDao.openCurrentSessionwithTransaction();
+			venueDao.update(entity);
+			venueDao.closeCurrentSessionwithTransaction();
+		}
+		else {
+			System.out.println("Venue with Id: " + entity.getId() + " doesn't exist in DataBase");
+		}
 	}
 
 	public Venue findById(int id) {
@@ -31,11 +45,17 @@ public class VenueService {
 		return venue;
 	}
 
-	public void delete(int id3) {
-		venueDao.openCurrentSessionwithTransaction();
-		Venue venue = venueDao.findById(id3);
-		venueDao.delete(venue);
-		venueDao.closeCurrentSessionwithTransaction();
+	public void delete(int id) {
+		VenueService venueServiceTmp = new VenueService();
+		Venue venue = venueServiceTmp.findById(id);
+		if(venue != null){
+			venueDao.openCurrentSessionwithTransaction();
+			venueDao.delete(venue);
+			venueDao.closeCurrentSessionwithTransaction();
+		}
+		else {
+			System.out.println("Venue with Id: " + id + " doesn't exist in DataBase");
+		}
 	}
 
 	public List<Venue> findAll() {

@@ -13,15 +13,31 @@ public class ArtistService {
 	}
 
 	public void persist(Artist entity) {
-		artistDao.openCurrentSessionwithTransaction();
-		artistDao.persist(entity);
-		artistDao.closeCurrentSessionwithTransaction();
+		ArtistService artistServiceTmp = new ArtistService();
+		Artist artist = artistServiceTmp.findById(entity.getName());
+		
+		if(artist == null){
+			artistDao.openCurrentSessionwithTransaction();
+			artistDao.persist(entity);
+			artistDao.closeCurrentSessionwithTransaction();
+		}
+		else{
+			System.out.println("Artist with Name: " + entity.getName() + " already exists in the DataBase");
+		}
 	}
 
 	public void update(Artist entity) {
-		artistDao.openCurrentSessionwithTransaction();
-		artistDao.update(entity);
-		artistDao.closeCurrentSessionwithTransaction();
+		ArtistService artistServiceTmp = new ArtistService();
+		Artist artist = artistServiceTmp.findById(entity.getName());
+		
+		if(artist != null){
+			artistDao.openCurrentSessionwithTransaction();
+			artistDao.update(entity);
+			artistDao.closeCurrentSessionwithTransaction();
+		}
+		else{
+			System.out.println("Artist with Name: " + entity.getName() + " doesn't exist in the DataBase");
+		}
 	}
 
 	public Artist findById(String id) {
@@ -32,10 +48,17 @@ public class ArtistService {
 	}
 
 	public void delete(String id) {
-		artistDao.openCurrentSessionwithTransaction();
-		Artist artist = artistDao.findById(id);
-		artistDao.delete(artist);
-		artistDao.closeCurrentSessionwithTransaction();
+		ArtistService artistServiceTmp = new ArtistService();
+		Artist artist = artistServiceTmp.findById(id);
+		
+		if(artist != null){
+			artistDao.openCurrentSessionwithTransaction();
+			artistDao.delete(artist);
+			artistDao.closeCurrentSessionwithTransaction();
+		}
+		else{
+			System.out.println("Artist with Name: " + id + " doesn't exist in the DataBase");
+		}
 	}
 
 	public List<Artist> findAll() {
