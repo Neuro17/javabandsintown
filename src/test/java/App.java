@@ -24,7 +24,7 @@ public class App {
 //		
 
  		
-		artist = bandsintown.getArtist.setArtist("manu chao").asJson().search();
+		artist = bandsintown.getArtist.setArtist("paul kalkbrenner").asJson().search();
 		log.debug(artist);
 		
  

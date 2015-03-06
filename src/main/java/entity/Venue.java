@@ -1,41 +1,25 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "venues")
-
 public class Venue {
 	
-	@Id
-	@Column(name = "venue_id")
 	private int id;
 	
-	@Column(name = "lat")
 	private double latitude;
 	
-	@Column(name = "lng")
 	private double longitude;
 	
-	@Column(name = "venue_name")
 	private String name;
 	
-	@Column(name = "venue_country")
 	private String country;
 	
-	@Column(name = "venue_city")
 	private String city;
 
-	@Column(name = "venue_region")
 	private String region;
-	
+		
 	public Venue(){
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -90,7 +74,7 @@ public class Venue {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Venue [latitude=" + latitude + ", longitude=" + longitude

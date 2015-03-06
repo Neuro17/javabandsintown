@@ -1,19 +1,9 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "artists")
 public class Artist {
 	
-	@Column(name = "artist_id")
 	private String id;
 
-	@Id
-	@Column(name = "artist_name")
 	private String name;
 	
 	public Artist(){

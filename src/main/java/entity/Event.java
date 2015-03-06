@@ -2,36 +2,20 @@ package entity;
 
 import java.util.ArrayList;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.joda.time.DateTime;
 
-@Entity
-@Table(name = "events")
 public class Event {
 	
-	@Id
-	@Column(name = "event_id")
 	private int id;
 	
-	@Column(name = "event_title")
 	private String title;
 	
 	private DateTime datetime;
 	
-	@Column(name = "event_description")
 	private String description;
 
 	private ArrayList<Artist> artist;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "venue_id", nullable = false)
 	private Venue venue;
 	
 	public Event(Integer id, String title, DateTime datetime, String description, ArrayList<Artist> artist, Venue venue) {
@@ -95,11 +79,10 @@ public class Event {
 		this.artist = artist;
 	}
 
-	
 	public Venue getVenue() {
 		return venue;
 	}
-
+	
 	public void setVenue(Venue venue) {
 		this.venue = venue;
 	}

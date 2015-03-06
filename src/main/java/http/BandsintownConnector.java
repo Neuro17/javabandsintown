@@ -1,6 +1,5 @@
 package http;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.apache.logging.log4j.LogManager;

@@ -1,22 +1,7 @@
 package geonames;
 
-import java.util.ArrayList;
-import java.util.TimeZone;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import search.Bandsintown;
-
-import entity.Event;
-
-
-
 public class TimezoneTest {
-	
-	private final static Logger log = LogManager.getLogger(TimezoneTest.class);
-
-	
+		
 	public static void main(String args[]){
 //		System.out.println("Siamo nell'" + TimeZone.getDefault().getDisplayName());
 //		System.out.println("milli secondi da aggiungere all'orario attuale per raggiungere il GMT: "+TimeZone.getDefault().getDSTSavings());
@@ -28,9 +13,9 @@ public class TimezoneTest {
 //		System.out.println("La nostra ora rispetta quella legale: " +TimeZone.getDefault().observesDaylightTime());
 
 //		GeonamesGet gng = new GeonamesGet();
-		Bandsintown bandsintown = new Bandsintown();
-		ArrayList<Event> events = null;
-		ArrayList<Event> eventsGMT = null;
+//		Bandsintown bandsintown = new Bandsintown();
+//		ArrayList<Event> events = null;
+//		ArrayList<Event> eventsGMT = null;
 		
 //test validità url
 //		System.out.println(gng.setLat("47.01").setLng("10.2").setUsername());
@@ -86,10 +71,10 @@ public class TimezoneTest {
 //					((timeToAdd>0)? "+" + timeToAdd :timeToAdd )+ ")" );
 //		}
 //		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
-		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
-		eventsGMT = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").searchGMTReferences();	
-		for(int i=0;i<events.size();i++){
-			log.trace("\n" + events.get(i).getDatetime() + "\n" + eventsGMT.get(i).getDatetime() );
-		}
+//		events = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").search();	
+//		eventsGMT = bandsintown.getEvents.setArtist("steve aoki").asJson().setDate("upcoming").searchGMTReferences();	
+//		for(int i=0;i<events.size();i++){
+//			log.trace("\n" + events.get(i).getDatetime() + "\n" + eventsGMT.get(i).getDatetime() );
+//		}
 	}
 }

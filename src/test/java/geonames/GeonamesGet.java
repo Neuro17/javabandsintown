@@ -3,13 +3,10 @@ package geonames;
 import java.util.TimeZone;
 
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.google.gson.JsonObject;
 
 public class GeonamesGet extends GeonamesConnector{
-	private static final Logger log = LogManager.getLogger(GeonamesGet.class);
 	
 	public GeonamesGet(){
 		uriBld = new URIBuilder();
