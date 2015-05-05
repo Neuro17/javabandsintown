@@ -28,16 +28,20 @@ public class Extractor {
 	public static ArrayList<Event> extractEvents(JsonElement item){
 		log.trace("Entering extractEvents");
 		ArrayList<Event> events = new ArrayList<Event>();
-		JsonObject eventsAsJson = item.getAsJsonObject();
-		
-		log.debug(item);
-		log.debug(eventsAsJson);
-		
-		for(JsonElement e : eventsAsJson.get("resultsPage").getAsJsonArray()){
-			events.add(extractEvent(e));
+		if(item != null){
+			JsonObject eventsAsJson = item.getAsJsonObject();
+			
+			log.debug(item);
+			log.debug(eventsAsJson);
+			
+			for(JsonElement e : eventsAsJson.get("resultsPage").getAsJsonArray()){
+				events.add(extractEvent(e));
+			}
+			log.trace("Exiting extractEvents");
+			return events;
 		}
-		log.trace("Exiting extractEvents");
-		return events;
+		else 
+			return null;
 	}
 	
 	public static ArrayList<Event> extractGMTReferencesEvents(JsonElement item){
@@ -138,15 +142,19 @@ public class Extractor {
 	public static Artist extractArtist(JsonElement item){
 		log.trace("Entering extractArtist");
 		Artist artist;
-		JsonObject artistTmp = item.getAsJsonObject();
-		log.debug(artistTmp);
-		if(artistTmp.get("mbid").isJsonNull())
-			artist = new Artist(artistTmp.get("name").getAsString());
+		if(item != null){
+			JsonObject artistTmp = item.getAsJsonObject();
+			log.debug(artistTmp);
+			if(artistTmp.get("mbid").isJsonNull())
+				artist = new Artist(artistTmp.get("name").getAsString());
+			else
+				artist = new Artist(artistTmp.get("name").getAsString(), artistTmp.get("mbid").getAsString());
+			
+			log.trace("Exiting extractArtist");
+			return artist;
+		}
 		else
-			artist = new Artist(artistTmp.get("name").getAsString(), artistTmp.get("mbid").getAsString());
-		
-		log.trace("Exiting extractArtist");
-		return artist;
+			return null;
 	}
 
 	public static ArrayList<Venue> extractVenues(JsonElement item) {

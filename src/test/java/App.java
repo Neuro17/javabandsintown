@@ -23,7 +23,10 @@ public class App {
 //		String mbid = "9282c8b4-ca0b-4c6b-b7e3-4f7762dfc4d6";
 //		
 
- 		
+/*non trovando l artista ritorna un puntatore a null*/
+		artist = bandsintown.getArtist.setArtist("Estadio GEBA").asJson().search();
+		log.debug(artist);
+		
 		artist = bandsintown.getArtist.setArtist("paul kalkbrenner").asJson().search();
 		log.debug(artist);
 		
@@ -38,10 +41,18 @@ public class App {
 		
 		artist = bandsintown.getArtist.setArtist("beyoncè").search();
 		System.out.println(artist);
-		
+
 		events = bandsintown.getEvents.setArtist("a great big pile of leaves").setDate("all").search();
 		for(Event e : events)
 			log.debug(e);
+
+/*non trovando eventi ritorna un puntatore a null*/
+		events = bandsintown.getEvents.setArtist("jhafdabfhjakdfuy").setDate("all").search();
+		if(events != null)
+			for(Event e : events)
+				log.debug(e);	
+		else
+			log.debug("no events found");
 		
 		events = bandsintown.getEvents.setArtist("david bowie").setDate("upcoming").search();
 		for(Event e : events)
@@ -71,6 +82,7 @@ public class App {
 			log.debug(v);
 		}
 		log.debug(venues.size());
+
 	}
 
 }
