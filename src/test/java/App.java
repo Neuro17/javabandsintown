@@ -23,14 +23,13 @@ public class App {
 //		String mbid = "9282c8b4-ca0b-4c6b-b7e3-4f7762dfc4d6";
 //		
 
-/*non trovando l artista ritorna un puntatore a null*/
-		artist = bandsintown.getArtist.setArtist("Estadio GEBA").asJson().search();
+//non trovando l artista ritorna un puntatore a null
+		artist = bandsintown.getArtist.setArtist("Shakira").asJson().search();
 		log.debug(artist);
 		
-		artist = bandsintown.getArtist.setArtist("paul kalkbrenner").asJson().search();
-		log.debug(artist);
-		
- 
+//		artist = bandsintown.getArtist.setArtist("paul kalkbrenner").asJson().search();
+//		log.debug(artist);
+/*		
 		events = bandsintown.getEvents.setArtist("paul kalkbrenner").asJson().setDate("all").search();
 		for(Event e : events)
 			log.debug(e);
@@ -46,7 +45,7 @@ public class App {
 		for(Event e : events)
 			log.debug(e);
 
-/*non trovando eventi ritorna un puntatore a null*/
+//non trovando eventi ritorna un puntatore a null
 		events = bandsintown.getEvents.setArtist("jhafdabfhjakdfuy").setDate("all").search();
 		if(events != null)
 			for(Event e : events)
@@ -82,7 +81,7 @@ public class App {
 			log.debug(v);
 		}
 		log.debug(venues.size());
-
+*/
 	}
 
 }
